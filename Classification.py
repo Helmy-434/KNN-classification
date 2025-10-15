@@ -1,6 +1,6 @@
 from collections import Counter
 
-def classification (tests_x,tests_y,train_x,train_y, k):
+def classification (train_x,train_y,tests_x,tests_y, k):
     predicted_output=[]
 
     for test in tests_x:
@@ -22,11 +22,12 @@ def classification (tests_x,tests_y,train_x,train_y, k):
     for output in predicted_output :
         if output == tests_y[i]:
             correct +=1
-    i+=1
+        i+=1
     accuracy=correct/len(tests_y)
+    print("At k = " + str(k) + " accuracy = " +str(accuracy*100)+"%")
 
 def distance (x,y):
-    n=x.size
+    n=len(x)
     d=0
     for i in range(n):
         d += (x[i]-y[i]) ** 2
