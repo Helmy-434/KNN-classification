@@ -2,7 +2,7 @@ from collections import Counter
 
 def classification (tests_x,tests_y,train_x,train_y, k):
     predicted_output=[]
-    
+
     for test in tests_x:
         distances = []
 
@@ -17,9 +17,17 @@ def classification (tests_x,tests_y,train_x,train_y, k):
 
         predicted_output.append( Counter(labels).most_common(1)[0][0] ) #add the most common label from the closest neighbours to the predicted outputs
 
+    i=0
+    correct=0
+    for output in predicted_output :
+        if output == tests_y[i]:
+            correct +=1
+    i+=1
+    accuracy=correct/len(tests_y)
 
 def distance (x,y):
-    #    n=x.size
-
-
-
+    n=x.size
+    d=0
+    for i in range(n):
+        d += (x[i]-y[i]) ** 2
+    return d ** 0.5
